@@ -2,11 +2,8 @@ const http = require('http');
 const { Client } = require("pg");
 
 const client = new Client({
-  user: "postgres",
-  host: "localhost",
-  database: "todo",
-  password: "admin",
-  port: 5432
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
 });
 
 client.connect();
@@ -103,6 +100,6 @@ http.createServer(async (req, res) => {
     });
   }
 
-}).listen(3000, () => {
+}).listen(process.env.PORT || 3000, () => {
   console.log("Server running on port 3000");
 });
