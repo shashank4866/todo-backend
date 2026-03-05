@@ -6,6 +6,7 @@ const client = new Client({
   ssl: { rejectUnauthorized: false }
 });
 
+// ok
 client.connect();
 
 http.createServer(async (req, res) => {
